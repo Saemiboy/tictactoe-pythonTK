@@ -11,7 +11,8 @@ board = [
     [0, 0, 0]
 ]
 player = 1
-feldgroesse = 540//3
+size = 540
+feldgroesse = size//3
 spielerXStand = 0
 spielerOStand = 0
 remainingTime = 2
@@ -32,9 +33,9 @@ bgColor = '#66A5AD'
 def initializeGame():
     # zeichnet die Linien
     for ver in range(1,3):
-        canvas.create_line(ver*feldgroesse, 0, ver*feldgroesse, 540, width=3, fill=fontcol)
+        canvas.create_line(ver*feldgroesse, 0, ver*feldgroesse, size, width=3, fill=fontcol)
     for hor in range(1,3):
-        canvas.create_line(0, hor*feldgroesse, 540, hor*feldgroesse, width=3, fill=fontcol)
+        canvas.create_line(0, hor*feldgroesse, size, hor*feldgroesse, width=3, fill=fontcol)
 
 def checkEmpty(grid):
     for row in grid:
@@ -80,14 +81,14 @@ def check_all_equal(l):
 def drawWinLine(art, pos):
     global feldgroesse
     if art == 'row':
-        canvas.create_line(feldgroesse/2 - 50, (pos*feldgroesse) + (feldgroesse/2), 540 - (feldgroesse/2 - 50), (pos*feldgroesse) + (feldgroesse/2), width=10, fill=winnerlinecol)
+        canvas.create_line(feldgroesse/2 - 50, (pos*feldgroesse) + (feldgroesse/2), size - (feldgroesse/2 - 50), (pos*feldgroesse) + (feldgroesse/2), width=10, fill=winnerlinecol)
     elif art == 'col':
-        canvas.create_line((pos*feldgroesse) + (feldgroesse/2), feldgroesse/2 - 50, (pos*feldgroesse) + (feldgroesse/2) , 540 - (feldgroesse/2 - 50), width=10, fill=winnerlinecol)
+        canvas.create_line((pos*feldgroesse) + (feldgroesse/2), feldgroesse/2 - 50, (pos*feldgroesse) + (feldgroesse/2) , size - (feldgroesse/2 - 50), width=10, fill=winnerlinecol)
     elif art == 'dia':
         if pos == 1:
-            canvas.create_line(50, 540-50, 540-50, 50, width=10, fill=winnerlinecol)
+            canvas.create_line(50, size-50, size-50, 50, width=10, fill=winnerlinecol)
         else:
-            canvas.create_line(50, 50, 540-50, 540-50, width=10, fill=winnerlinecol)
+            canvas.create_line(50, 50, size-50, size-50, width=10, fill=winnerlinecol)
 
 def checkforWin():
     global board
@@ -406,7 +407,7 @@ resetSpielstand_btn = tk.Button(spielstandFrame, text='Reset Spielstand', font=c
 resetSpielstand_btn.place(relx=0.5, rely=0.6, anchor=tk.CENTER)
 
 # Canvas
-canvas = tk.Canvas(root, bg=between, width=540, height=540, highlightthickness=0)
+canvas = tk.Canvas(root, bg=between, width=size, height=size, highlightthickness=0)
 canvas.place(relx=0.5, rely=0.5, anchor='center')
 # Titel
 titellabel = tk.Label(root, text='Tic Tac Toe', font=custom_font, bg=dark, fg=fontcol)
