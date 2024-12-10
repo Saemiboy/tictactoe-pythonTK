@@ -374,7 +374,7 @@ def startCountdown():
 # Window
 root = tk.Tk()
 root.state('zoomed')
-root.overrideredirect(True)
+# root.overrideredirect(True)
 root.title('Tic Tac Toe')
 root.config(bg=dark)
 
